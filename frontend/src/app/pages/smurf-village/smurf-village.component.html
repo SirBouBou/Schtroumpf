@@ -1,0 +1,26 @@
+<div class="village">
+    <h1 class="title centered-text" *ngIf="diviseListe()">Le village des Schtroumpfs ({{i}} habitants)</h1>
+    <br>
+    <table>
+        <tr *ngFor="let l of liste">
+            <td *ngFor="let smurf of l">
+                <div class="profiles" [routerLink]="['/app/smurf',smurf._id]">                
+                    <div class="smallPic" [ngStyle]= "{'background': getPic(smurf.famille)}"></div>
+                    <div class="name">{{smurf.pseudo}}</div>  
+                </div>
+            </td> 
+        </tr>
+    </table>
+    <div class="hudV" *ngIf="testConnected()">
+        <div class="btn-toolbar">
+            <button class="btn btn-primary add-button btn-rounded-corners btn-sm mx-1" routerLink="/app/newUser">Rejoindre le village</button>
+            <button class="btn btn-primary add-button btn-rounded-corners btn-sm mx-1" routerLink="/app/login">Se connecter</button>
+        </div>
+    </div>
+    <div class="hudV" *ngIf="!testConnected()">
+        <div class="btn-toolbar">
+            <button class="btn btn-primary add-button btn-rounded-corners btn-sm mx-2" [routerLink]="['/app/smurf', mysmurf]">Mon profil</button>
+            <button class="btn btn-primary add-button btn-rounded-corners btn-sm mx-2" (click)="deconnexion()" routerLink="/">Deconnexion</button>
+        </div>
+    </div>
+</div>

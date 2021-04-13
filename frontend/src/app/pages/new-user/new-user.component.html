@@ -1,0 +1,31 @@
+<div class="centered-content">
+    <div class="modal-box form-group">
+
+        <h1 class="title">Formulaire d'admission au village.</h1>
+
+        <input #authLogin type="text" class="form-control has-background-light" placeholder="Entrez votre login">
+        <input #authPass type="password" class="form-control has-background-light" placeholder="Entrez votre mot de passe">
+        <input #authPassV type="password" class="form-control has-background-light" placeholder="Validez votre mot de passe">     
+        <input #authPseudo type="text" class="form-control has-background-light" placeholder="Entrez votre pseudonyme">
+        <input #authAge type="text" class="form-control has-background-light" placeholder="Entrez votre age">
+        <input #authNourriture type="text" class="form-control has-background-light" placeholder="Entrez votre nourriture préférée">
+
+        <select #authFamille class="form-select form-select-lg mb-3">
+            <option selected value="0">Choisissez votre famille</option>
+            <option value="Grand Schtroumpf">Grand Schtroumpf</option>
+            <option value="Schtroumpf a Lunettes">Schtroumpf à lunettes</option>
+            <option value="Schtroumpf Paresseux">Schtroumpf Paresseux</option>
+            <option value="Schtroumpfette">Schtroumpfette</option>
+            <option value="Schtroumpf Beta">Schtroumpf Bêta</option>
+            <option value="Schtroumpf Cuisinier">Schtroumpf Cuisinier</option>
+            <option value="Schtroumpf Peureux">Schtroumpf Peureux</option>
+            <option value="Schtroumpf Costaud">Schtroumpf Costaud</option>
+            <option value="Schtroumpf Grognon">Schtroumpf Grognon</option>
+            <option value="Schtroumpf Musicien">Schtroumpf Musicien</option>
+        </select>
+
+        <button class="btn btn-primary" (click)="verifieAuth(authLogin.value, authPass.value, authPassV.value, authPseudo.value, authAge.value, authNourriture.value, authFamille.value)">Valider</button>
+        <button class="btn white-text" routerLink='/'>Annuler</button>
+        
+    </div>
+</div>

@@ -1,0 +1,38 @@
+<div>
+    <h1 class="title centered-text">Profil de {{smurfs.pseudo}}</h1>
+    <div class="box">
+        <div class="profil">
+            <table>
+                <tr>
+                    <td>
+                        <div class="bigPic" [ngStyle]= "{'background': getBigPic(smurfs.famille)}"></div>
+                    </td>
+                    <td>
+                        <div class="infos white-text">
+                            <ul>
+                                <ol>Pseudo : {{smurfs.pseudo}}</ol>
+                                <ol>Age : {{smurfs.age}}</ol>
+                                <ol>Famille : {{smurfs.famille}}</ol>
+                                <ol>Nourriture préférée : {{smurfs.nourriture}}</ol>
+                            </ul>
+                        </div>
+                    </td>
+                </tr>
+            </table>
+        </div>
+        <h3 class="white-text">Mes amis ({{nbAmis}}) :</h3>
+        <div class="container testimonial-group">
+            <div class="row text-center">
+                    <div class="col-4" *ngFor="let ami of amis">       
+                        <div class="smallPic" [ngStyle]= "{'background': getPic(ami.famille)}" (click)="redirectTo(['/app/smurf',ami._id])"></div>
+                        <div class="name">{{ami.pseudo}}</div>
+                    </div>
+            </div>
+        </div>
+        <div class="btn-toolbar hudP">
+            <button *ngIf="!testConnected() && (smurfId != mysmurf)" class="btn btn-primary add-button btn-rounded-corners btn-sm mx-1" (click)="ajouteAmi()">Ajouter en ami</button>
+            <button class="btn btn-primary add-button btn-rounded-corners btn-sm mx-1" (click)="home()">Retour au village</button>
+        </div>
+
+    </div>
+</div>
