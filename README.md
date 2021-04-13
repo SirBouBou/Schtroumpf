@@ -1,9 +1,9 @@
-Lancer le serveur backend : 
+Lancer le serveur backend :   
 
-  cd backend
-  nodemon app.js
+  cd backend  
+  nodemon app.js  
   
-Lancer le serveur frontend :
+Lancer le serveur frontend :  
 
-  cd frontend
-  ng serve
+  cd frontend  
+  ng serve  
