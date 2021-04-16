@@ -124,6 +124,11 @@ export class SmurfViewComponent implements OnInit {
     }
   }
 
+  creeAmi() {
+    this.router.navigateByUrl('/app/newUser', {skipLocationChange: true})  
+  }
+
+
   /**
    * Permet de tester si un utilisateur est connecté en verifiant les cookies.
    * Si un utilisateur est connecté, recupère l'id de son Schtroumpf dans la variable mysmurf.
