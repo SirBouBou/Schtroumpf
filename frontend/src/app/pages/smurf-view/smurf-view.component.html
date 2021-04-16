@@ -30,6 +30,7 @@
             </div>
         </div>
         <div class="btn-toolbar hudP">
+            <button *ngIf="!testConnected() && (smurfId == mysmurf)" class="btn btn-primary add-button btn-rounded-corners btn-sm mx-1" (click)="creeAmi()">Creer le compte d'un ami</button>
             <button *ngIf="!testConnected() && (smurfId != mysmurf)" class="btn btn-primary add-button btn-rounded-corners btn-sm mx-1" (click)="ajouteAmi()">Ajouter en ami</button>
             <button class="btn btn-primary add-button btn-rounded-corners btn-sm mx-1" (click)="home()">Retour au village</button>
         </div>
