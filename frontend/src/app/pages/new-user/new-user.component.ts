@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { SmurfService } from 'src/app/smurf.service';
+import { getCookie } from 'src/app/cookie-typescript-utils';
 
 @Component({
   selector: 'app-new-user',
@@ -31,6 +32,7 @@ export class NewUserComponent implements OnInit {
    * @returns void
   */
   verifieAuth(login: string, pass: string, passV: string, pseudo: string, age: string, nourriture: string, famille: string) {
+
     if(login.length == 0 || pass.length == 0 || passV.length == 0 || pseudo.length == 0 || age.length == 0 || nourriture.length == 0 || famille == "0") {
       alert("N'oubliez pas de renseigner tous les champs");
     }
@@ -42,10 +44,25 @@ export class NewUserComponent implements OnInit {
       alert("Votre age est incorrect");
 
     else {
-      var test = "";
-      this.smurfService.createAuth(login, pass, pseudo, parseInt(age), nourriture, famille).subscribe((text: any) => test = text);
-      alert("Inscription réussie");
-      this.router.navigate(['./']);
-    }   
+      var test1 = "";
+      let smurfid = "";
+      this.smurfService.createAuth(login, pass, pseudo, parseInt(age), nourriture, famille).subscribe((text: any) => smurfid = text);
+      setTimeout(() => {
+        console.log(smurfid);
+        let cookie = getCookie("connected");
+          if(cookie != false && typeof (cookie) === 'string') { 
+            this.smurfService.ajouteAmi(smurfid, cookie).subscribe((val: any) => test1 = val);
+            setTimeout(() => {
+              if(typeof test1 === 'object')  {
+                alert("Ami ajouté !");
+              } else {
+                alert("Vous êtes déja amis avec cette personne");
+              }
+            }, 100)  
+          }
+        alert("Inscription réussie");
+        this.router.navigate(['./']);
+      }, 500)
+    }
   }
 }
