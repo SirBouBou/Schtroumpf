@@ -65,7 +65,7 @@ app.post('/app/newUser', (req, res) => {
                                     pass: hash,
                                     smurfId: result._id
                                 })
-                                res.json("Sign Up Success");
+                                res.json(result._id);
                             }
 
                         })
